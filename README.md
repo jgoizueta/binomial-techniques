@@ -25,3 +25,21 @@ Note:
 ```
 x=N/2, p=q=1/2 => N!/(N/2)!^2 / p^N
 ```
+
+Computing this for N=3030 requires handling large numbers
+(N!/(N/2)!^2) is approximately 1.9E910 and
+2^N is approximately 1.3E912.
+
+To compute it in floating point, exponents as large as 912
+must be supported. Common IEEE floating point formats
+are not apt for this, but it we can use
+HP50G XREALs (internal numeric format) or
+the LONGFLOAT library, DBL mode can be used on the WP34S,
+or numeric types such as Julia BigFloat, Flt for Ruby,
+Decimal for Python, etc.)
+
+An alternative way is to compute this exactly using
+fractions of arbitrary large integers (as supported by Ruby,
+Python, Julia, HP50 an various CASs systems)
+and then compute the quotient (which may be tricky
+due to overflow, e.g. on the HP50G)

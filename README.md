@@ -43,3 +43,25 @@ fractions of arbitrary large integers (as supported by Ruby,
 Python, Julia, HP50 an various CASs systems)
 and then compute the quotient (which may be tricky
 due to overflow, e.g. on the HP50G)
+
+To avoid overflow problems while computing with
+standard precision (IEEE floating point)
+the techniques of:
+
+Fast and Accurate Computation of Binomial Probabilities
+by Catherine Loader (2000) can be used.
+Some implementation of this and similar algorithms,
+capable of handling large values of N
+without extended arithmetic are:
+
+* The `dbinom` function from R
+* `scipy.stats.binom` from SciPy
+* `Binomp` from the WP34S
+* `BINOM.DIST` from Spreasheets such as Calc or Excel.
+  Note that  `BINOMDIST` from Numbers
+  has narrower limits for its arguments.
+* The `Distribution::Binomial`
+  of the SciRuby `distribution` gem,
+  if the 'GSL' library and the 'rb-gsl' gems
+  are installed (otherwise for large numbers the
+  result will be NaN)

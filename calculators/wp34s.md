@@ -1,4 +1,5 @@
 
+Using double precision:
 
 ```
 DBLON
@@ -15,4 +16,12 @@ ENTER
 COMB
 x<>y
 /
+```
+
+Using the `PROB` `Binom` distribution:
+
+```
+0.5 STO J
+N STO K
+x Binomp
 ```

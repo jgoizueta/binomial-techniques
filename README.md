@@ -1,4 +1,4 @@
-Compute probability of tie result in poll.
+Compute probability of tie result in a poll.
 
 Binomial distribution: 2 results (success/failure) per events;
 Count number of successes after N events.
@@ -12,6 +12,9 @@ N!/(x!*(N-x)!)*p^x*q^(N-x) = (\binom{N}{x}) p^x q^(1-x)
 
 Tie probability (x=N/2) with N voters (yes/no voting).
 (p = 1/2)
+
+Problem: solve this for N of the order of 3000.
+
 
 |  N   |         |
 |-----:|--------:|
@@ -32,11 +35,21 @@ Computing this for N=3030 requires handling large numbers
 
 To compute it in floating point, exponents as large as 912
 must be supported. Common IEEE floating point formats
-are not apt for this, but it we can use
-HP50G XREALs (internal numeric format) or
-the LONGFLOAT library, DBL mode can be used on the WP34S,
-or numeric types such as Julia BigFloat, Flt for Ruby,
-Decimal for Python, etc.)
+are not apt for this.
+
+## Possible approaches
+
+### Extendend floating point arithmetic
+
+In this we only need an increased exponent range to avoid
+overflow. We can use extended floating point formats
+such as those of the GMP library (C),
+Julia's BigFloat, Phython's Decimal,
+Flt for Ruby,
+the XREAL (internal numeric format) of HP50G calculators
+or the DBL mode of the WP34S, etc.
+
+### Exact computation
 
 An alternative way is to compute this exactly using
 fractions of arbitrary large integers (as supported by Ruby,
@@ -44,12 +57,15 @@ Python, Julia, HP50 an various CASs systems)
 and then compute the quotient (which may be tricky
 due to overflow, e.g. on the HP50G)
 
+### Better algorithms
+
 To avoid overflow problems while computing with
-standard precision (IEEE floating point)
-the techniques of:
+standard precision (IEEE floating point) better
+algorihtms can be usde, e.g.:
 
 Fast and Accurate Computation of Binomial Probabilities
-by Catherine Loader (2000) can be used.
+by Catherine Loader (2000)
+
 Some implementation of this and similar algorithms,
 capable of handling large values of N
 without extended arithmetic are:

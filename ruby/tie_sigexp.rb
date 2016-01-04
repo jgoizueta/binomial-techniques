@@ -1,3 +1,10 @@
+# This uses a base-10 significand-exponent format to
+# keep intermediate values.
+# This way, intermediate values could be represented as:
+def sig_exp_to_s(sig, exp)
+  "#{sig}E#{exp}"
+end
+
 # Given the decimal logarithm of a quantity x,
 # return the significand s and exponent e such
 # that x = s*10**e

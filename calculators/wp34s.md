@@ -19,7 +19,8 @@ x<>y
 /
 ```
 
-Using the `PROB` `Binom` distribution:
+Using the `PROB` `Binom` distribution
+(which is applicable also to the WP31S):
 
 ```
 0.5 STO J

@@ -7,7 +7,7 @@ Probability of success p; q = 1 - p
 Binomial probability of x successes in N trials:
 
 ```
-N!/(x!*(N-x)!)*p^x*q^(N-x) = (\binom{N}{x}) p^x q^(1-x)
+N!/(x!*(N-x)!)*p^x*q^(N-x) = (\binom{N}{x}) p^x q^(N-x)
 ```
 
 Tie probability (x=N/2) with N voters (yes/no voting).

@@ -26,7 +26,7 @@ Problem: solve this for N of the order of 3000.
 Note:
 
 ```
-x=N/2, p=q=1/2 => N!/(N/2)!^2 / p^N
+x=N/2, p=q=1/2 => N!/(N/2)!^2 / 2^N
 ```
 
 Computing this for N=3030 requires handling large numbers
@@ -39,12 +39,12 @@ are not apt for this.
 
 ## Possible approaches
 
-### Extendend floating point arithmetic
+### Extended floating point arithmetic
 
 In this we only need an increased exponent range to avoid
 overflow. We can use extended floating point formats
 such as those of the GMP library (C),
-Julia's BigFloat, Phython's Decimal,
+Julia's BigFloat, Python's Decimal,
 Flt for Ruby,
 the XREAL (internal numeric format) of HP50G calculators
 or the DBL mode of the WP34S, etc.
@@ -61,10 +61,9 @@ due to overflow, e.g. on the HP50G)
 
 To avoid overflow problems while computing with
 standard precision (IEEE floating point) better
-algorihtms can be usde, e.g.:
+algorithms can be used, e.g.:
 
-Fast and Accurate Computation of Binomial Probabilities
-by Catherine Loader (2000)
+* [Fast and Accurate Computation of Binomial Probabilities](http://octave.1599824.n4.nabble.com/attachment/3829107/0/loader2000Fast.pdf) by Catherine Loader (2000)
 
 Some implementation of this and similar algorithms,
 capable of handling large values of N
@@ -81,3 +80,5 @@ without extended arithmetic are:
   if the 'GSL' library and the 'rb-gsl' gems
   are installed (otherwise for large numbers the
   result will be NaN)
+
+A simple technique to be able to compute the binomial formula with limited precision is using logarithms; the logarithm of the factorial can be computed by adding the logarithms of the factors. A better way would be to use the `lgamma` function (logarithm of the gamma function) which would allow us to compute the logarithm of the solution as `lgamma(n) - 2*gamma(x) - n*ln(x)`.

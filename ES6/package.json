@@ -1,0 +1,14 @@
+{
+  "name": "tie-vote",
+  "version": "1.0.0",
+  "description": "Compute tie-vote probability using binomial distribution",
+  "main": "tie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Javier Goizueta <jgoizueta@gmail.com> (http://www.jgoizueta.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^2.1.4"
+  }
+}
